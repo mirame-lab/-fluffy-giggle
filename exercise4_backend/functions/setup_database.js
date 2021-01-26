@@ -2,16 +2,16 @@ const db = require("../functions/api/database");
 
 async function setupDatabase(req, res, next) {
   // To delete all the collections
-  const collections = ["users", "todos"];
+  const collections = ["users", "quotes"];
   collections.forEach(async (collection) => await deleteCollection(collection));
 
   // Add documents to the todos collection
-  addDocuments("todos", [
-    { title: "Prepare proposal for the new project", completed: true },
-    { title: "Replace light bulb", completed: true },
-    { title: "Buy Flutter eBook", completed: false },
-    { title: "Subscribe to Fibre optic internet service", completed: false },
-    { title: "Setup online meeting room", completed: true },
+  addDocuments("quotes", [
+    { data: "Prepare proposal for the new project", like: 10, dislike: 0},
+    { data: "Replace light bulb", like: 10, dislike: 0},
+    { data: "Buy Flutter eBook", like: 10, dislike: 0 },
+    { data: "Subscribe to Fibre optic internet service", like: 10, dislike: 0 },
+    { data: "Setup online meeting room", like: 10, dislike: 0},
   ]);
 
   res.send("Setting Up Database.... Done ");

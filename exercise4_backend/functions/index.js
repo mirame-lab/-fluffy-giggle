@@ -17,11 +17,11 @@ exports.hello = functions.https.onRequest((req, res) => {
   exports.hi = functions.https.onRequest((req, res) => {
     res.json({ message: "Hi there. Greeting from Firebase" });
   });
-
+exports.setupdb = functions.https.onRequest(require("./setup_database"));
 app.get("/", (req, res, next) =>
   res.json({ message: "Firebase function service is working" })
 );
-
+ 
 app.get("/newuser/:name", async (req, res, next) => {
     const name = req.params.name;
     const user = { name: name };
